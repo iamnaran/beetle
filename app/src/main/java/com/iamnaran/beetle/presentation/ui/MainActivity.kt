@@ -20,12 +20,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : ComponentActivity() {
 
 
-    val mainViewModel: MainViewModel by viewModel<MainViewModel>()
+    private val mainViewModel: MainViewModel by viewModel<MainViewModel>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
-
+        mainViewModel.doApiRequest()
         super.onCreate(savedInstanceState)
 
         setTheme(android.R.style.Theme_DeviceDefault)

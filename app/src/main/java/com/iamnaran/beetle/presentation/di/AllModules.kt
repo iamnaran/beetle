@@ -4,7 +4,7 @@ val appDiComponents = listOf(
     AppModule.coroutineModule,
     NetworkModule.httpModule,
     NetworkModule.apiServiceModule,
-    RepositoryModule.repoModule,
-    ViewModelModule.vmModule,
+    repositoryModule,
+    viewModelModule,
 
     )

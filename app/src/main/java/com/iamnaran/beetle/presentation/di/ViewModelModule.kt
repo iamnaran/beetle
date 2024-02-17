@@ -5,13 +5,9 @@ import com.iamnaran.beetle.presentation.ui.home.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-object ViewModelModule {
-
-    val vmModule = module {
-        viewModel { MainViewModel(get()) }
-        viewModel { HomeViewModel() }
-
-    }
+val viewModelModule = module {
+    viewModel { MainViewModel(get()) }
+    viewModel { HomeViewModel() }
 
 }
 

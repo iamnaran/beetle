@@ -36,11 +36,7 @@ class AuthApiServiceImpl(private val httpClient: HttpClient) : AuthApiService {
         password: String
     ): Flow<ApiResponse<User>> = httpClient.safeRequestWithFlow {
         method = HttpMethod.Get
-        url(ApiEndPoints.LOGIN_URL)
-        formData {
-            parameter("username", username)
-            parameter("password", password)
-        }
+        url(ApiEndPoints.PRODUCTS_URL)
 
     }
 
