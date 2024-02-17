@@ -1,4 +1,4 @@
-package com.iamnaran.beetle.presentation.ui.home
+package com.iamnaran.beetle.presentation.ui.start
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -31,11 +31,9 @@ import androidx.wear.compose.material.TimeText
 import androidx.wear.compose.material.Vignette
 import androidx.wear.compose.material.VignettePosition
 import com.iamnaran.beetle.presentation.utils.BeetleWearPreview
-import org.koin.androidx.compose.getViewModel
-
 
 @Composable
-fun HomeScreen(homeViewModel: HomeViewModel = getViewModel(), navigateToLogin: () -> Unit) {
+fun SelectThemeScreen(navigateToMain: () -> Unit) {
 
     val scalingLazyListState = rememberScalingLazyListState()
 
@@ -52,13 +50,13 @@ fun HomeScreen(homeViewModel: HomeViewModel = getViewModel(), navigateToLogin: (
             )
         }
     ) {
-        HomeContent(navigateToLogin, scalingLazyListState)
+        LoginContent(navigateToMain, scalingLazyListState)
     }
 
 }
 
 @Composable
-fun HomeContent(navigateToLogin: () -> Unit, scalingLazyListState: ScalingLazyListState) {
+fun LoginContent(navigateToMain: () -> Unit, scalingLazyListState: ScalingLazyListState) {
     val contentModifier = Modifier
         .fillMaxWidth()
         .padding(bottom = 8.dp)
@@ -81,40 +79,20 @@ fun HomeContent(navigateToLogin: () -> Unit, scalingLazyListState: ScalingLazyLi
     ) {
 
         item {
-            HomeHeaderText(contentModifier)
+            HeaderText(contentModifier)
 
         }
 
         item {
-            HomeItemContainer(contentModifier, iconModifier, navigateToLogin)
+            LanguageChipContainer(contentModifier, iconModifier, navigateToMain)
         }
 
 
     }
 }
 
-
 @Composable
-fun HomeHeaderText(modifier: Modifier) {
-
-    Column {
-        Text(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            style = MaterialTheme.typography.caption1,
-            textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.primary,
-            text = "Home"
-        )
-
-    }
-
-}
-
-
-@Composable
-fun HomeItemContainer(
+fun LanguageChipContainer(
     modifier: Modifier,
     iconModifier: Modifier,
     navigateToMain: () -> Unit
@@ -167,10 +145,29 @@ fun HomeItemContainer(
 }
 
 
+@Composable
+fun HeaderText(modifier: Modifier) {
+
+    Column {
+        Text(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            style = MaterialTheme.typography.caption1,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colors.primary,
+            text = "Select a theme"
+        )
+
+    }
+
+}
+
 @BeetleWearPreview
 @Composable
-fun HomePreview() {
-    HomeScreen() {
+fun LoginPreview() {
+    SelectThemeScreen() {
+
 
     }
 }

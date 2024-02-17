@@ -9,11 +9,19 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.wear.compose.material.Scaffold
+import androidx.wear.compose.material.TimeText
+import androidx.wear.compose.material.Vignette
+import androidx.wear.compose.material.VignettePosition
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import com.iamnaran.beetle.presentation.theme.BeetleTheme
 import com.iamnaran.beetle.presentation.ui.navigation.RootNavHost
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
+
+
+    val mainViewModel: MainViewModel by viewModel<MainViewModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -24,6 +32,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             BeetleTheme {
+
                 val navController = rememberSwipeDismissableNavController()
                 MainContent(navController)
             }
@@ -35,7 +44,19 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainContent(navController: NavHostController) {
-    Scaffold() {
+    Scaffold(
+        timeText = {
+            TimeText()
+        },
+        vignette = {
+            Vignette(vignettePosition = VignettePosition.TopAndBottom)
+        },
+        positionIndicator = {
+//            PositionIndicator(
+//                scalingLazyListState = scalingLazyListState
+//            )
+        }
+    ) {
         RootNavHost(navHostController = navController)
     }
 

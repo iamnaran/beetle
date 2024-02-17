@@ -4,7 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
-import com.iamnaran.beetle.presentation.ui.login.LoginScreen
+import com.iamnaran.beetle.presentation.ui.home.HomeScreen
+import com.iamnaran.beetle.presentation.ui.start.SelectThemeScreen
 
 @Composable
 fun RootNavHost(navHostController: NavHostController) {
@@ -14,14 +15,16 @@ fun RootNavHost(navHostController: NavHostController) {
     ) {
 
         composable(AppScreen.Login.route) {
-            LoginScreen {
-                navHostController.navigate(AppScreen.Home.route)
+            SelectThemeScreen {
+                navHostController.navigate(AppScreen.Home.route){
+
+                }
             }
         }
 
         composable(AppScreen.Home.route) {
-            LoginScreen {
-                navHostController.navigate(AppScreen.Login.route)
+            HomeScreen {
+                navHostController.navigateUp()
             }
         }
 
